@@ -16,9 +16,16 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
   
   files = list.files(directory, full.names = TRUE)
   files <- files[id]
+  all_data = list() 
 
+  for (i in files) {
+    data = read.csv(i)
+    data = data[which(data[,pollutant] != "NA"),]
+    data = data[c(pollutant)]
+    all_data = rbind(all_data,data)
+  }
   
+  print(mean(all_data[[pollutant]]))
 }
-
 
 
