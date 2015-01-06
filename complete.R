@@ -25,5 +25,7 @@ complete <- function(directory, id = 1:332) {
     all_stats = rbind(all_stats,stats)
     index = index + 1
   }
-  print(all_stats)
+  
+  colnames(all_stats) = c("id","nobs")
+  return(all_stats)
 }
