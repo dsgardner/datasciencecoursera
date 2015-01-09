@@ -25,7 +25,7 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
     all_data = rbind(all_data,data)
   }
   
-  print(mean(all_data[[pollutant]]))
+  return(mean(all_data[[pollutant]]))
 }
 
 

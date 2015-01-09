@@ -15,12 +15,13 @@ complete <- function(directory, id = 1:332) {
   
   files = list.files(directory, full.names = TRUE)
   files <- files[id]
-  all_stats = data.frame(id=numeric(),nobs=numeric(),stringsAsFactors=FALSE)
+  all_stats = data.frame()
   index = 1
   
   for (i in files) {
     data = read.csv(i)
     data = data[which(data[,"sulfate"] != "NA"),]
+    data = data[which(data[,"nitrate"] != "NA"),]
     stats = c(id[index],length(data[["sulfate"]]))
     all_stats = rbind(all_stats,stats)
     index = index + 1
